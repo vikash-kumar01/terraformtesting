@@ -29,8 +29,7 @@ pipeline{
             steps{
 
                 sh """
-
-                 terraform plan -var 'access_key=${ACCESS_KEY} -var 'secret_key=${SECRET_KEY} --var-file=./config/dev.tfvars'
+                 terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' --var-file=./config/dev.tfvars
                 """
             }
         }
