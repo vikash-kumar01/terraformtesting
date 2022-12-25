@@ -4,7 +4,7 @@ pipeline{
 
     parameters{
 
-        choice(name: 'action', choices: 'create/destroy', description: 'create/Destroy the infrastructure')
+        choice(name: 'action', choices: 'create\ndestroy', description: 'create/Destroy the infrastructure')
     }
 
     environment {
@@ -43,10 +43,26 @@ pipeline{
             steps{
 
                 script{
+
+                    def apply = false
+
+                    try{
+                       
+                       input message: 'Can you please confirm the apply', ok: 'Ready to apply terraform'
+                       apply = true
+
+                    } catch(err){
+
+                      apply = false
+                      currentBuild.result = 'UNSTABLE'
+                    }
                
+                   if(apply){
+                  
                 sh """
                  terraform apply -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' --var-file=./config/dev.tfvars --auto-approve
                 """
+                   }
 
                 }
             }
