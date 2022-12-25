@@ -67,5 +67,11 @@ pipeline{
                 }
             }
         }
+        stage('terraform destroy'){
+
+                            sh """
+                 terraform destroy -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' --var-file=./config/dev.tfvars --auto-approve
+                """
+        }
     }
 }
