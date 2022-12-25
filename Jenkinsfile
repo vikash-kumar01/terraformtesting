@@ -2,6 +2,11 @@ pipeline{
     
     agent any 
 
+    parameters{
+
+        choice(name: 'action', choices: 'create/destroy', description: 'create/Destroy the infrastructure')
+    }
+
     environment {
 
         ACCESS_KEY = credentials('AWS_ACCESS_KEY_ID')
