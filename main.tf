@@ -189,3 +189,26 @@ module "nic2" {
 
 }
 
+
+
+module "s3_bucket1" {
+  
+  source = "./modules/aws_s3"
+
+  bucket_name = var.bucket_name1
+  tags        = {
+
+    "name" = "s3_1"
+  }
+}
+
+module "s3_bucket2" {
+  source = "./modules/aws_s3"
+
+  bucket_name = var.bucket_name2
+  tags    = {
+
+    "name" = "s3_2"
+  }
+}
+

@@ -45,3 +45,10 @@ instance_type1 = "t2.micro"
 
 ami_image2     = "ami-0574da719dca65348"
 instance_type2 = "t2.micro"
+
+
+
+############### S3
+
+bucket_name1 = "vikashashoke123456"
+bucket_name2 = "vikashashoke1234567"
