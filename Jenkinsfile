@@ -33,5 +33,18 @@ pipeline{
                 """
             }
         }
+        stage('terraform apply'){
+
+            steps{
+
+                script{
+               
+                sh """
+                 terraform apply -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' --var-file=./config/dev.tfvars --auto-approve
+                """
+
+                }
+            }
+        }
     }
 }
